@@ -21,10 +21,6 @@ if os.path.exists(videopath):
 
         gray_bgimg = cv2.cvtColor(bgimg,cv2.COLOR_BGR2GRAY)
 
-        #getting the first frame as a reference to later resize the background image
-        #success, ref_img = stream.read()
-        #bgimg = resize(bgimg,ref_img)
-
         #creating variables to adjust the noise in the mask later
         dilate_iter = 8
         erode_iter = 8
@@ -54,8 +50,6 @@ if os.path.exists(videopath):
         median = cv2.cvtColor(median, cv2.COLOR_BGR2GRAY) #convert median value to grayscale
         median = cv2.GaussianBlur(median, (5,5), 0) #blur to reduce differences in pixel values in consequent frames
 
-        canvas = np.zeros((height, nframe*2,3), dtype='uint8')
-
         #recorder
         fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
         recorder = cv2.VideoWriter('no_background.mp4', fourcc, fps, (width,height))
@@ -77,8 +71,8 @@ if os.path.exists(videopath):
             mask_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             #applying Gaussian Blur to remove noise
             mask_frame = cv2.GaussianBlur(mask_frame, (5,5), 0) #converting the video into grayscale
-            #getting abs difference 
-            dif_frame = cv2.absdiff(median, mask_frame) #getting the absolute difference value between median frame (background) and each frame
+            #getting the absolute difference value between median frame (background) and each frame
+            dif_frame = cv2.absdiff(median, mask_frame) 
             
             '''setting the threshold for deciding whether to put the pixel in foreground
             more than threshold value or background (less than threshold value)'''
