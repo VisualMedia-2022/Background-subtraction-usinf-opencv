@@ -23,8 +23,8 @@ b. Condiditions for chromakey video: You could also use a video shot with chroma
 3. How to run the code:
 - You could run the code in the terminal or any other application. When you run the code, it will ask you to input the file path name of the original video and path name of the new background image. To find the path name of the file, please follow the instructions below:
 
-Finding path name in Mac: https://macpaw.com/how-to/get-file-path-mac
-Finding path name in Windows: https://www.howtogeek.com/670447/how-to-copy-the-full-path-of-a-file-on-windows-10/
+> Finding path name in Mac: https://macpaw.com/how-to/get-file-path-mac
+> Finding path name in Windows: https://www.howtogeek.com/670447/how-to-copy-the-full-path-of-a-file-on-windows-10/
 
 4. Saving the video: The final video will be automatically saved in the same folder where your python file is. You could change the name of the video in line number 55 (recorder = cv2.VideoWriter('no_background.mp4', fourcc, fps, (width,height)))
 
